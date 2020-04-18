@@ -14,7 +14,7 @@ const getMoviesByQuery = (request, response) => {
 
   if (matchingDirectors.length > 0) return response.send(matchingDirectors)
 
-  else return response.status(404).send('No Matching Movies Found')
+  return response.status(404).send('No Matching Movies Found')
 }
 
 const createMovie = (request, response) => {
