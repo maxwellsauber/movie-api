@@ -37,5 +37,4 @@ const createMovie = (request, response) => {
   return response.status(201).send(newMovie)
 }
 
-
 module.exports = { getAllMovies, getMoviesByQuery, createMovie }
