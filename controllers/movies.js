@@ -6,15 +6,10 @@ const getAllMovies = (request, response) => {
 
 const getMoviesByQuery = (request, response) => {
   const { query } = request.params
-  const matchingTitles = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()))
+  const matchingMovies = movies.filter(movie => movie.directors
+    .concat(movie.title).join().toLowerCase().includes(query.toLowerCase()))
 
-  if (matchingTitles.length > 0) return response.send(matchingTitles)
-
-  const matchingDirectors = movies.filter(movie => movie.directors.join().toLowerCase().includes(query.toLowerCase()))
-
-  if (matchingDirectors.length > 0) return response.send(matchingDirectors)
-
-  return response.status(404).send('No Matching Movies Found')
+  return matchingMovies ? response.send(matchingMovies) : response.status(404).send('No Matching Movies Found')
 }
 
 const createMovie = (request, response) => {
