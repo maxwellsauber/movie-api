@@ -9,7 +9,9 @@ const getMoviesByQuery = (request, response) => {
   const matchingMovies = movies.filter(movie => movie.directors
     .concat(movie.title).join().toLowerCase().includes(query.toLowerCase()))
 
-  return matchingMovies ? response.send(matchingMovies) : response.status(404).send('No Matching Movies Found')
+  return matchingMovies.length
+    ? response.send(matchingMovies)
+    : response.status(404).send(`No movies found for "${query}"`)
 }
 
 const createMovie = (request, response) => {
