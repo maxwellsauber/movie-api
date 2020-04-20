@@ -10,6 +10,8 @@ app.get('/movies/:query', getMoviesByQuery)
 
 app.post('/movies', bodyParser.json(), createMovie)
 
-app.listen(1338, () => {
-  console.log('Listening on port 1338...') // eslint-disable-line no-console
+app.all('*', (request, response) => response.status(404).send('Page Not Found'))
+
+app.listen(1332, () => {
+  console.log('Listening on port 1332...') // eslint-disable-line no-console
 })
