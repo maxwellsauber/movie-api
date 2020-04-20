@@ -1,8 +1,6 @@
 const movies = require('../movies')
 
-const getAllMovies = (request, response) => {
-  return response.send(movies)
-}
+const getAllMovies = (request, response) => response.send(movies)
 
 const getMoviesByQuery = (request, response) => {
   const { query } = request.params
